@@ -1,0 +1,15 @@
+{
+  "name": "the-stove-shop",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "gridsome-source-wordpress": "^0.4.13"
+  }
+}
