@@ -7,6 +7,7 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@noxify/gridsome-plugin-remote-image": "^1.0.0",
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
