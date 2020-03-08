@@ -1,49 +1,50 @@
 <template>
   <Layout>
     <div>
-      <h1>Shop</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia quod
-        vel earum consectetur dolores enim maiores sit fugit modi quidem quia
-        rerum eligendi iusto magni sed totam pariatur, ab vitae.
-      </p>
-      <ul>
-        <li v-for="{ node } in $page.allWordpressProduct.edges" :key="node.id">
-          {{ node.title }}
-          {{ node.sourceUrl }}
-          {{ node.featuredMedia.slug }}
-          <div v-if="node.featuredMedia"></div>
-          <img
-            v-if="node.featuredMedia.mimeType == 'image/jpeg'"
-            :src="require(`../wp-images/${node.featuredMedia.slug}.jpg`)"
-          />
-          <img
-            v-if="node.featuredMedia.mimeType == 'image/png'"
-            :src="require(`../wp-images/${node.featuredMedia.slug}.png`)"
-          />
+      <div class="row">
+        {{ this.$store.state.filter }}
+      </div>
+      <button
+        class="rounded py-2 px-4 bg-orange-400 text-orange-900 pointer outline-none"
+        @click="gogo"
+      >
+        Goooooo!
+      </button>
+      <ul class="flex flex-wrap justify-between">
+        <li
+          class="w-full md:w-1/4  p-4 text-center"
+          v-for="{ node } in $page.allWooCommerceProduct.edges"
+          :key="node.id"
+        >
+          <ProductCard :node="node" />
         </li>
       </ul>
       <Pager
         class="pagination text-center"
-        :info="$page.allWordpressProduct.totalCount"
+        :info="$page.allWooCommerceProduct.pageInfo"
       />
     </div>
   </Layout>
 </template>
+
 <page-query>
-query Home ($page: Int) {
-  allWordpressProduct (page: $page, perPage: 10) @paginate {
+query Products ($page: Int) {
+  allWooCommerceProduct (sortBy: "date_created" page: $page, perPage: 24) @paginate {
+    pageInfo{
+      currentPage
+      totalPages
+    }
     totalCount
-    edges {
-      node {
-        id
-        title
-        featuredMedia{
-          slug
-          id
-          mimeType
-          sourceUrl
-        }
+    edges{
+      node{
+        name
+        slug
+        price
+        date_created
+        images{
+          src
+          alt
+        }    
       }
     }
   }
@@ -51,13 +52,27 @@ query Home ($page: Int) {
 </page-query>
 
 <script>
+import ProductCard from "~/components/ProductCard";
 import { Pager } from "gridsome";
 
 export default {
   components: {
-    Pager
+    Pager,
+    ProductCard
+  },
+  methods: {
+    gogo() {
+      this.$store.commit("increment");
+    }
   }
 };
 </script>
 
-<style></style>
+<style>
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  max-width: 300px;
+}
+</style>

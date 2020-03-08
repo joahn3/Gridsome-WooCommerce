@@ -7,10 +7,16 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@gridsome/source-wordpress": "^0.5.3",
     "@noxify/gridsome-plugin-remote-image": "^1.0.0",
-    "gridsome": "^0.7.0"
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "gridsome": "^0.7.13",
+    "tailwindcss": "^1.2.0",
+    "vuex": "^3.1.2",
+    "woocommerce-api": "^1.5.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.0",
     "gridsome-source-wordpress": "^0.4.13"
   }
 }

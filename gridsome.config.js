@@ -4,10 +4,20 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develope
 
+var path = require('path');
+const tailwind = require('tailwindcss')
+const purgecss = require('@fullhuman/postcss-purgecss')
+
+const postcssPlugins = [
+	tailwind(),
+]
+
+if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(require('./purgecss.config.js')))
+
 module.exports = {
   siteName: 'The Stove Shop',
   chainWebpack: config => {
-    config.resolve.alias.set('@images', '@/wp-images')
+    config.resolve.alias.set('@images', path.resolve('wp-images'))
   },
   plugins: [
     {
@@ -24,24 +34,32 @@ module.exports = {
         },
         splitPostsIntoFragments: true, // default false
         downloadRemoteImagesFromPosts: true, // default false
-        postImagesLocalPath: './src/wp-images/',
+        postImagesLocalPath: './wp-images/',
         downloadRemoteFeaturedImages: true, // default false
-        featuredImagesLocalPath: './src/wp-images/',
+        featuredImagesLocalPath: './wp-images/',
         downloadACFImages: true
       }
     }
   ],
-  // templates: {
-  //   Product: [
-  //     {
-  //       path: '/product/:slug',
-  //       component: './src/templates/Products.vue'
-  //     }
-  //     // {
-  //     //   name: 'reviews',
-  //     //   path: '/product/:slug/reviews',
-  //     //   component: './src/templates/ProductReviews.vue'
-  //     // }
-  //   ]
-  // }
+  css: {
+    loaderOptions: {
+        postcss: {
+            plugins: postcssPlugins,
+        },
+    },
+  },
+
+  templates: {
+    WooCommerceProduct: [
+      {
+        path: '/product/:slug',
+        component: './src/templates/SingleProduct.vue'
+      }
+      // {
+      //   name: 'reviews',
+      //   path: '/product/:slug/reviews',
+      //   component: './src/templates/ProductReviews.vue'
+      // }
+    ]
+  }
 }

@@ -7,5 +7,4 @@ dist
 .env
 .env.*
 wp-images
-.temp
 .vscode
