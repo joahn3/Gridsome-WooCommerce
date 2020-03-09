@@ -29,7 +29,7 @@
 
 <page-query>
 query Products ($page: Int) {
-  allWooCommerceProduct (sortBy: "date_created" filter: {price: {ne: ""}} page: $page, perPage: 12) @paginate {
+  allWooCommerceProduct (limit: 24 sortBy: "date_created" filter: {price: {ne: ""}} page: $page, perPage: 12) @paginate {
     pageInfo{
       currentPage
       totalPages
