@@ -14,7 +14,8 @@
           ></p>
         </div>
         <div class="w-2/5">
-          <g-image class="max-w-md" :src="myImage(product.images[0].src)" />
+          <!-- <g-image class="max-w-md" :src="myImage(product.images[0].src)" /> -->
+          <g-image class="max-w-md" :src="product.images[0].src" />
         </div>
       </div>
     </div>

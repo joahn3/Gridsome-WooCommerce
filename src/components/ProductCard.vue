@@ -1,10 +1,15 @@
 <template>
   <div>
     <g-link :to="`/product/${node.slug}`">
-      <g-image
+      <!-- <g-image
         class="product-image"
         :alt="node.images[0].alt"
         :src="myImage(node.images[0].src)"
+      /> -->
+      <g-image
+        class="product-image"
+        :alt="node.images[0].alt"
+        :src="node.images[0].src"
       />
       <div class="text-gray-700">{{ node.name }}</div>
       <span> €{{ node.price }} </span>

@@ -25,6 +25,8 @@ module.exports = function (api) {
     // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
     const products = addCollection("WooCommerceProduct");
     const { data } = await WooCommerce.get("products", { per_page: 100 });
+    console.log(data);
+    
     for (const item of data) {
        products.addNode({ ...item });
     }

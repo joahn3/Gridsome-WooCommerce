@@ -32,12 +32,12 @@ module.exports = {
           post: '/:slug',
           post_tag: '/tag/:slug'
         },
-        splitPostsIntoFragments: true, // default false
-        downloadRemoteImagesFromPosts: true, // default false
-        postImagesLocalPath: './wp-images/',
-        downloadRemoteFeaturedImages: true, // default false
-        featuredImagesLocalPath: './wp-images/',
-        downloadACFImages: true
+        // splitPostsIntoFragments: true, // default false
+        // downloadRemoteImagesFromPosts: true, // default false
+        // postImagesLocalPath: './wp-images/',
+        // downloadRemoteFeaturedImages: true, // default false
+        // featuredImagesLocalPath: './wp-images/',
+        // downloadACFImages: true
       }
     }
   ],
