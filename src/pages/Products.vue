@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div>
-      <div class="row">
+      <!-- <div class="row">
         {{ this.$store.state.filter }}
       </div>
       <button
@@ -9,7 +9,7 @@
         @click="gogo"
       >
         Goooooo!
-      </button>
+      </button> -->
       <ul class="flex flex-wrap justify-between -mx-8">
         <li
           class="w-1/2 md:w-1/3 lg:w-1/4 p-4 text-center"
@@ -61,9 +61,9 @@ export default {
     ProductCard
   },
   methods: {
-    gogo() {
-      this.$store.commit("increment");
-    }
+    // gogo() {
+    //   this.$store.commit("increment");
+    // }
   }
 };
 </script>
