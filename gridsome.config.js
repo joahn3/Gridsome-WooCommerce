@@ -23,7 +23,7 @@ module.exports = {
     {
       use: 'gridsome-source-wordpress',
       options: {
-        baseUrl: 'https://thestoveshop.ie', // required
+        baseUrl: 'https://chicroumaine.com', // required
         apiBase: 'wp-json',
         typeName: 'Wordpress',
         perPage: 100,
